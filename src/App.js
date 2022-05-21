@@ -22,9 +22,14 @@ function App() {
     }
   ]);
 
+  const onInsert = (value) => {
+    const newId = todos[todos.length - 1].id + 1;
+    setTodos(todos.concat({id: newId, text: value, checked: false}));
+  }
+
   return (
     <TodoTemplate>
-      <TodoInsert />
+      <TodoInsert onInsert={ onInsert }/>
       <TodoList todos={todos} />
     </TodoTemplate>
   );
